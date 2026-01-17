@@ -577,18 +577,88 @@ iframe:hover {
   text-decoration: underline;
 }
 
+@media (max-width: 900px) {
+  .header {
+    padding: 80px 16px;
+  }
+
+  .header h1 {
+    font-size: 2.4rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+}
+
 @media (max-width: 768px) {
-  .contact-content {
+  .navbar-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .logo {
+    margin-bottom: 4px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    font-size: 0.92rem;
+  }
+
+  .header {
+    padding: 70px 16px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  section {
+    padding: 60px 16px;
+  }
+
+  .service-grid,
+  .project-grid,
+  .video-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
-  
+
+  iframe {
+    height: 220px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .contact-info {
     grid-template-columns: 1fr;
   }
-  
-  .nav-links {
-    gap: 15px;
-    font-size: 0.85rem;
+
+  .footer-content {
+    grid-template-columns: 1fr;
   }
 }
 
