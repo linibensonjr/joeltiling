@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Professional tile installation services in Uyo, Akwa Ibom. Expert tiling for bathrooms, kitchens, floors, and commercial spaces.">
-  <title>Joel the Tiler | Professional Tiling Services in Uyo</title>
+  <title>Joel Tiling | Professional Tiling Services in Uyo</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,8 +12,13 @@
 <!-- NAVIGATION -->
 <nav class="navbar">
   <div class="container navbar-content">
-    <div class="logo">Joel the Tiler</div>
-    <ul class="nav-links">
+    <div class="logo">Joel Tiling</div>
+    <button class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#process">Process</a></li>
@@ -26,10 +31,10 @@
 <!-- HEADER -->
 <header class="header">
   <div class="container">
-    <h1>Joel the Tiler</h1>
+    <h1>Joel Tiling</h1>
     <p>Professional Tile Installation in Uyo, Akwa Ibom</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/2348130003406" class="btn primary">WhatsApp Joel</a>
+      <a href="https://wa.me/2348130003406" class="btn whatsapp">WhatsApp Joel</a>
       <a href="#contact" class="btn secondary">Get a Quote</a>
     </div>
   </div>
@@ -193,7 +198,7 @@
 
     <div class="contact-content">
       <div class="contact-form">
-        <form action="mailto:linibensojr@gmail.com" method="post" enctype="text/plain">
+        <form id="contactForm" action="mailto:linibensojr@gmail.com" method="post" enctype="text/plain">
           <input type="text" name="name" placeholder="Your Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Phone Number" required>
@@ -230,6 +235,7 @@
       <div class="footer-section">
         <h4>Joel the Tiler</h4>
         <p>Professional tile installation services in Uyo, Akwa Ibom.</p>
+        <p><strong>Contact:</strong> <a href="https://wa.me/2348130003406">WhatsApp</a></p>
       </div>
       <div class="footer-section">
         <h4>Quick Links</h4>
@@ -240,23 +246,6 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Bathroom Tiling</a></li>
-          <li><a href="#services">Kitchen Backsplash</a></li>
-          <li><a href="#services">Floor Tiling</a></li>
-          <li><a href="#services">Custom Designs</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <a href="#">WhatsApp</a>
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
-        </div>
-      </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Joel the Tiler. All rights reserved. | Uyo, Akwa Ibom</p>
@@ -264,6 +253,7 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
