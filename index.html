@@ -1,259 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Professional tile installation services in Uyo, Akwa Ibom. Expert tiling for bathrooms, kitchens, floors, and commercial spaces.">
-  <title>Joel Tiling | Professional Tiling Services in Uyo</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joel — Master Tiler | Uyo, Nigeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0f0d0b; --ink2: #1a1612; --ink3: #252018;
+  --gold: #c9a96e; --gold2: #e8d5a8; --stone: #8c7e6a;
+  --white: #fdfaf5; --wa: #25D366; --r: 0.5rem;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--white); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+/* CURSOR */
+#cur { position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s; }
+#cur-r { position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,110,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s; }
+.cg #cur { width:20px;height:20px; }
+.cg #cur-r { width:56px;height:56px;border-color:rgba(201,169,110,.8); }
+
+/* NAV */
+nav { position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;transition:background .4s,padding .4s; }
+nav.sc { background:rgba(15,13,11,.92);backdrop-filter:blur(18px);padding:1rem 4rem;border-bottom:1px solid rgba(201,169,110,.1); }
+.nav-logo { font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);text-decoration:none; }
+.nav-logo em { font-style:italic; }
+.nav-links { display:flex;gap:2.5rem;list-style:none; }
+.nav-links a { color:rgba(253,250,245,.6);text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:color .2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-wa { display:flex;align-items:center;gap:.55rem;background:var(--wa);color:#fff;text-decoration:none;padding:.6rem 1.4rem;border-radius:3rem;font-size:.8rem;font-weight:500;letter-spacing:.06em;transition:box-shadow .25s,transform .2s; }
+.nav-wa:hover { box-shadow:0 0 24px rgba(37,211,102,.4);transform:translateY(-1px); }
+
+/* HERO */
+#hero { height:100vh;min-height:680px;position:relative;display:flex;align-items:flex-end;overflow:hidden; }
+.hero-bg { position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1615971677499-5467cbab01b0?w=1600&q=80') center/cover no-repeat;animation:hzoom 18s ease-in-out infinite alternate; }
+@keyframes hzoom { from{transform:scale(1.06)} to{transform:scale(1.0)} }
+.hero-bg::after { content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(15,13,11,.94) 38%,rgba(15,13,11,.25) 100%),linear-gradient(to top,rgba(15,13,11,.95) 0%,transparent 45%); }
+.hero-content { position:relative;z-index:2;padding:0 5rem 7rem;max-width:680px; }
+.eyebrow-hero { display:inline-flex;align-items:center;gap:.8rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:fu .8s .3s forwards; }
+.eyebrow-hero::before { content:'';width:2.5rem;height:1px;background:var(--gold); }
+h1 { font-family:'Playfair Display',serif;font-size:clamp(3.2rem,6.5vw,6rem);line-height:1.0;font-weight:900;margin-bottom:1.5rem;opacity:0;animation:fu .9s .5s forwards; }
+h1 em { font-style:italic;color:var(--gold); }
+.hero-sub { font-size:1.05rem;line-height:1.8;color:rgba(253,250,245,.65);max-width:440px;margin-bottom:3rem;opacity:0;animation:fu .9s .7s forwards; }
+.hero-actions { display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fu .9s .9s forwards; }
+.hero-scroll { position:absolute;bottom:2.5rem;right:5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--stone);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;animation:fu 1s 1.3s forwards; }
+.scroll-ln { width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sln 2s ease-in-out infinite; }
+@keyframes sln { 0%,100%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top} }
+@keyframes fu { from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)} }
+
+/* BTNs */
+.btn-gold { background:var(--gold);color:var(--ink);padding:.95rem 2.4rem;border-radius:var(--r);text-decoration:none;font-weight:600;font-size:.88rem;letter-spacing:.06em;transition:background .2s,transform .2s,box-shadow .2s; }
+.btn-gold:hover { background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,169,110,.3); }
+.btn-outline { border:1px solid rgba(201,169,110,.4);color:var(--gold2);padding:.95rem 2.4rem;border-radius:var(--r);text-decoration:none;font-size:.88rem;letter-spacing:.06em;transition:border-color .2s,transform .2s; }
+.btn-outline:hover { border-color:var(--gold);transform:translateY(-2px); }
+
+/* STATS */
+#stats { background:var(--gold);display:grid;grid-template-columns:repeat(4,1fr); }
+.stat { padding:1.8rem 1.5rem;text-align:center;border-right:1px solid rgba(15,13,11,.12); }
+.stat:last-child { border-right:none; }
+.stat-n { font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--ink);font-weight:900;line-height:1; }
+.stat-l { font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,13,11,.6);margin-top:.3rem;font-weight:500; }
+
+/* SECTIONS */
+section { padding:7rem 5rem; }
+.eyebrow { display:inline-flex;align-items:center;gap:.8rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
+.eyebrow::before { content:'';width:2rem;height:1px;background:var(--gold); }
+h2 { font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.08;margin-bottom:1rem; }
+h2 em { font-style:italic;color:var(--gold); }
+
+/* SERVICES */
+#services { background:var(--ink2); }
+.svc-intro { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem; }
+.svc-intro p { color:var(--stone);line-height:1.8; }
+.svc-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,.1); }
+.svc { background:var(--ink2);padding:2.6rem 2rem;position:relative;overflow:hidden;transition:background .3s; }
+.svc:hover { background:var(--ink3); }
+.svc-num { font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:rgba(201,169,110,.08);line-height:1;position:absolute;top:1rem;right:1.5rem;transition:color .3s; }
+.svc:hover .svc-num { color:rgba(201,169,110,.15); }
+.svc-icon { font-size:1.8rem;margin-bottom:1.2rem; }
+.svc h3 { font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold2);margin-bottom:.6rem; }
+.svc p { color:var(--stone);font-size:.88rem;line-height:1.75; }
+.svc-bar { position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s ease; }
+.svc:hover .svc-bar { width:100%; }
+
+/* GALLERY */
+#gallery { background:var(--ink);padding-bottom:0; }
+.gallery-head { display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:3rem; }
+.gallery-head p { color:var(--stone);line-height:1.8; }
+.gallery-grid { display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:4px; }
+.gp { overflow:hidden;position:relative; }
+.gp img { width:100%;height:100%;object-fit:cover;transition:transform .6s ease; }
+.gp:hover img { transform:scale(1.06); }
+.gp .glabel { position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,13,11,.85));padding:1.5rem 1.2rem 1rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);opacity:0;transition:opacity .3s; }
+.gp:hover .glabel { opacity:1; }
+.gp.s2 { grid-row:span 2; }
+
+/* BEFORE AFTER */
+#ba { background:var(--ink2); }
+.ba-head { text-align:center;max-width:560px;margin:0 auto 4rem; }
+.ba-head p { color:var(--stone);line-height:1.8;margin-top:.8rem; }
+.ba-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem; }
+.ba-card { }
+.ba-meta { display:flex;justify-content:space-between;margin-bottom:.8rem; }
+.ba-tag { font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone); }
+.ba-title { font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:1rem; }
+.sw { position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/3;cursor:ew-resize;user-select:none;box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.sw-after { position:absolute;inset:0; }
+.sw-after img { width:100%;height:100%;object-fit:cover; }
+.sw-before { position:absolute;inset:0;overflow:hidden;clip-path:inset(0 50% 0 0); }
+.sw-before img { width:100%;height:100%;object-fit:cover; }
+.sw-line { position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);z-index:3; }
+.sw-handle { position:absolute;top:50%;left:50%;z-index:4;width:44px;height:44px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3); }
+.sw-badges { position:absolute;top:1rem;left:0;right:0;display:flex;justify-content:space-between;padding:0 1rem;z-index:5;pointer-events:none; }
+.bb,.ab { font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:.3rem .7rem;border-radius:2rem;backdrop-filter:blur(4px); }
+.bb { background:rgba(15,13,11,.7);color:#fff; }
+.ab { background:rgba(201,169,110,.85);color:var(--ink); }
+
+/* VIDEOS */
+#work { background:var(--ink); }
+.work-head { display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:3rem; }
+.work-head p { color:var(--stone);line-height:1.8; }
+.vid-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+.vid-card { }
+.vid-thumb { aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;position:relative;background:var(--ink3);border:1px dashed rgba(201,169,110,.2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;cursor:pointer;transition:border-color .3s; }
+.vid-thumb:hover { border-color:var(--gold); }
+.play-c { width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s; }
+.vid-thumb:hover .play-c { transform:scale(1.12);box-shadow:0 0 24px rgba(201,169,110,.4); }
+.vid-tag { font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone); }
+.vid-info { margin-top:.9rem; }
+.vid-info h4 { font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold2);margin-bottom:.2rem; }
+.vid-info p { font-size:.78rem;color:var(--stone); }
+.vid-embed { aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;border:1px solid rgba(201,169,110,.15); }
+.vid-embed iframe { width:100%;height:100%;border:none;display:block; }
+
+/* PROCESS */
+#process { background:var(--ink2); }
+.proc-head { text-align:center;max-width:520px;margin:0 auto 5rem; }
+.proc-head p { color:var(--stone);margin-top:.8rem;line-height:1.8; }
+.proc-steps { display:grid;grid-template-columns:repeat(4,1fr);position:relative; }
+.proc-steps::before { content:'';position:absolute;top:22px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.step { text-align:center;padding:0 1.5rem; }
+.step-n { width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--ink);font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:0 0 0 6px rgba(201,169,110,.12); }
+.step h3 { font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold2);margin-bottom:.5rem; }
+.step p { font-size:.85rem;color:var(--stone);line-height:1.7; }
+
+/* TESTIMONIALS */
+#testi { background:var(--ink); }
+.testi-head { text-align:center;margin-bottom:4rem; }
+.testi-head p { color:var(--stone);margin-top:.6rem; }
+.testi-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+.tc { background:var(--ink2);border-radius:var(--r);padding:2rem 1.8rem;border:1px solid rgba(201,169,110,.08);position:relative;transition:border-color .3s,transform .3s; }
+.tc:hover { border-color:rgba(201,169,110,.25);transform:translateY(-4px); }
+.tc::before { content:'"';font-family:'Playfair Display',serif;font-size:5rem;line-height:1;color:rgba(201,169,110,.1);position:absolute;top:.5rem;left:1.4rem; }
+.stars { color:var(--gold);font-size:.85rem;margin-bottom:1rem;letter-spacing:.1em; }
+.tc blockquote { color:rgba(253,250,245,.7);font-size:.9rem;line-height:1.8;margin-bottom:1.5rem;font-style:italic; }
+.tp { display:flex;align-items:center;gap:.8rem; }
+.tav { width:40px;height:40px;border-radius:50%;background:var(--ink3);border:2px solid rgba(201,169,110,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold); }
+.tname { font-weight:500;font-size:.88rem;color:var(--gold2); }
+.tloc { font-size:.74rem;color:var(--stone); }
+
+/* CONTACT */
+#contact { background:var(--ink2); }
+.ct-grid { display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start; }
+.ct-left p { color:var(--stone);line-height:1.85;margin-bottom:2.5rem;font-size:.98rem; }
+.ir { display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(201,169,110,.08); }
+.ir-icon { font-size:1.2rem;flex-shrink:0;margin-top:2px; }
+.ir-l { font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;font-weight:500; }
+.ir-v { color:var(--white);font-size:.96rem; }
+.wa-cta { display:flex;align-items:center;gap:1rem;background:var(--wa);color:#fff;text-decoration:none;padding:1.1rem 2rem;border-radius:var(--r);font-size:.96rem;font-weight:600;letter-spacing:.04em;margin-top:2rem;transition:box-shadow .3s,transform .2s;width:fit-content; }
+.wa-cta:hover { box-shadow:0 0 32px rgba(37,211,102,.45);transform:translateY(-2px); }
+.wa-sub { font-size:.72rem;opacity:.8;font-weight:400;margin-top:.1rem; }
+.form-row { margin-bottom:1.2rem; }
+.form-row label { display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.5rem; }
+.form-row input,.form-row textarea,.form-row select { width:100%;background:var(--ink3);border:1px solid rgba(201,169,110,.12);color:var(--white);padding:.85rem 1rem;border-radius:.3rem;font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s; }
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus { border-color:var(--gold); }
+.form-row textarea { resize:vertical;min-height:120px; }
+.form-row select option { background:var(--ink2); }
+.form-submit { width:100%;background:var(--gold);color:var(--ink);border:none;padding:1rem;border-radius:.3rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;letter-spacing:.06em;transition:background .2s,transform .2s; }
+.form-submit:hover { background:var(--gold2);transform:translateY(-2px); }
+.form-note { font-size:.74rem;color:var(--stone);margin-top:.8rem;text-align:center;line-height:1.6; }
+
+/* FLOATING WA */
+#fwa { position:fixed;bottom:2rem;right:2rem;z-index:400;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;animation:fpulse 3s ease-in-out infinite; }
+#fwa:hover { transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.6); }
+@keyframes fpulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,.65)} }
+.ftip { position:absolute;right:68px;background:var(--ink2);color:var(--white);font-size:.78rem;white-space:nowrap;padding:.4rem .8rem;border-radius:.3rem;border:1px solid rgba(201,169,110,.15);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(4px); }
+#fwa:hover .ftip { opacity:1;transform:translateX(0); }
+
+/* FOOTER */
+footer { background:var(--ink);border-top:1px solid rgba(201,169,110,.08);padding:2rem 5rem;display:flex;align-items:center;justify-content:space-between; }
+.fl { font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold); }
+.fl em { font-style:italic; }
+.flinks { display:flex;gap:2rem; }
+.flinks a { color:var(--stone);font-size:.8rem;text-decoration:none;letter-spacing:.1em;transition:color .2s; }
+.flinks a:hover { color:var(--gold); }
+footer small { color:var(--stone);font-size:.75rem; }
+
+/* REVEAL */
+.reveal { opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease; }
+.reveal.on { opacity:1;transform:none; }
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  section{padding:5rem 2.5rem}
+  nav{padding:1.2rem 2rem}
+  nav.sc{padding:.9rem 2rem}
+  .nav-links{display:none}
+  .hero-content{padding:0 2.5rem 6rem}
+  #stats{grid-template-columns:repeat(2,1fr)}
+  .svc-intro,.gallery-head,.work-head{grid-template-columns:1fr;gap:1rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gp.s2{grid-row:span 1}
+  .ba-grid{grid-template-columns:1fr}
+  .vid-grid{grid-template-columns:1fr 1fr}
+  .proc-steps{grid-template-columns:1fr 1fr;gap:2rem}
+  .proc-steps::before{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .ct-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1.2rem;text-align:center;padding:2rem}
+  .flinks{flex-wrap:wrap;justify-content:center}
+  body{cursor:auto}
+  #cur,#cur-r{display:none}
+}
+@media(max-width:600px){
+  .svc-grid,.vid-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="navbar">
-  <div class="container navbar-content">
-    <div class="logo">Joel Tiling</div>
-    <button class="nav-toggle" id="navToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- FLOATING WHATSAPP -->
+<a id="fwa" href="https://wa.me/YOUR_NUMBER?text=Hi%20Joel!%20I'd%20like%20a%20quote." target="_blank" aria-label="WhatsApp Joel">
+  <span class="ftip">Chat with Joel</span>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="mainnav">
+  <a href="#hero" class="nav-logo">Joel <em>Tiler</em></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#ba">Before &amp; After</a></li>
+    <li><a href="#work">Videos</a></li>
+    <li><a href="#testi">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/+2348130003406" class="nav-wa" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp Joel
+  </a>
 </nav>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container">
-    <h1>Joel Tiling</h1>
-    <p>Professional Tile Installation in Uyo, Akwa Ibom</p>
-    <div class="cta-buttons">
-      <a href="https://wa.me/2348130003406" class="btn whatsapp">WhatsApp Joel</a>
-      <a href="#contact" class="btn secondary">Get a Quote</a>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow-hero">Master Tiler · Uyo, Akwa Ibom</div>
+    <h1>Precision.<br>Craft. <em>Beauty.</em></h1>
+    <p class="hero-sub">From your bathroom floor to your poolside — Joel brings a decade of skill, an eye for detail, and a guarantee you'll love every tile.</p>
+    <div class="hero-actions">
+      <a href="#ba" class="btn-gold">See Transformations</a>
+      <a href="#contact" class="btn-outline">Get a Free Quote</a>
     </div>
   </div>
-</header>
+  <div class="hero-scroll"><div class="scroll-ln"></div><span>Scroll</span></div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Projects Completed</div></div>
+  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Years Experience</div></div>
+  <div class="stat"><div class="stat-n">All</div><div class="stat-l">Tile Types Handled</div></div>
+  <div class="stat"><div class="stat-n">Uyo</div><div class="stat-l">Based &amp; Available</div></div>
+</div>
 
 <!-- SERVICES -->
-<section class="services" id="services">
-  <div class="container">
-    <h2>Our Services</h2>
-    <p>Professional tiling solutions for every space</p>
+<section id="services">
+  <div class="svc-intro">
+    <div class="reveal">
+      <div class="eyebrow">What We Do</div>
+      <h2>Every Surface,<br><em>Perfectly Tiled</em></h2>
+    </div>
+    <p class="reveal d1">Whether it's a cozy home bathroom or a large commercial lobby, Joel handles it all — with care, precision, and lasting results backed by a decade of hands-on experience.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal"><div class="svc-num">01</div><div class="svc-icon">🛁</div><h3>Bathrooms &amp; Kitchens</h3><p>Full wet area tiling — floors, walls, showers and backsplashes. Proper waterproofing always included.</p><div class="svc-bar"></div></div>
+    <div class="svc reveal d1"><div class="svc-num">02</div><div class="svc-icon">🏠</div><h3>Residential Floors</h3><p>Living rooms, bedrooms, corridors — laid level, tightly grouted, built to outlast decades of use.</p><div class="svc-bar"></div></div>
+    <div class="svc reveal d2"><div class="svc-num">03</div><div class="svc-icon">🏢</div><h3>Commercial Spaces</h3><p>Offices, shops, hotels and more. Large-format tiles, precise patterns, and on-time delivery every time.</p><div class="svc-bar"></div></div>
+    <div class="svc reveal"><div class="svc-num">04</div><div class="svc-icon">🏊</div><h3>Pools &amp; Water Features</h3><p>Specialist pool tiling with fully waterproofed substrates. Mosaic, ceramic or porcelain — your choice.</p><div class="svc-bar"></div></div>
+    <div class="svc reveal d1"><div class="svc-num">05</div><div class="svc-icon">🌿</div><h3>Outdoor &amp; Patios</h3><p>Verandas, driveways, garden paths — anti-slip finishes, UV-resistant, and built for the Nigerian climate.</p><div class="svc-bar"></div></div>
+    <div class="svc reveal d2"><div class="svc-num">06</div><div class="svc-icon">✦</div><h3>Feature Walls &amp; Mosaics</h3><p>Custom patterns, decorative accents, mosaic art. If you can picture it, Joel can tile it.</p><div class="svc-bar"></div></div>
+  </div>
+</section>
 
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <h3>Bathroom Tiling</h3>
-        <p>Waterproof and durable tile installations for modern bathrooms with expert finishing.</p>
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-head">
+    <div class="reveal">
+      <div class="eyebrow">Photo Gallery</div>
+      <h2>Craftsmanship<br><em>on Every Surface</em></h2>
+    </div>
+    <p class="reveal d1">Real projects, real homes — every photo below is work completed by Joel and his team right here in Uyo and across Akwa Ibom State. Replace these with your own project photos!</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gp s2 reveal"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=80" alt="Bathroom tiling Uyo"><div class="glabel">Master Bathroom — Uyo Residence</div></div>
+    <div class="gp reveal d1"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Kitchen backsplash"><div class="glabel">Kitchen Backsplash</div></div>
+    <div class="gp reveal d2"><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80" alt="Floor tiling"><div class="glabel">Living Room Floor</div></div>
+    <div class="gp reveal"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Pool tiles"><div class="glabel">Swimming Pool Install</div></div>
+    <div class="gp reveal d1"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Outdoor patio"><div class="glabel">Outdoor Patio &amp; Steps</div></div>
+    <div class="gp reveal d2"><img src="https://images.unsplash.com/photo-1493606278519-11aa9f86e40a?w=600&q=80" alt="Feature wall mosaic"><div class="glabel">Mosaic Feature Wall</div></div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="ba">
+  <div class="ba-head reveal">
+    <div class="eyebrow">Transformations</div>
+    <h2>Before &amp; <em>After</em></h2>
+    <p>Drag the handle to reveal the transformation. Same room, same angle — completely different result. This is what Joel does.</p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-card reveal">
+      <div class="ba-title">Bathroom Floor Renovation</div>
+      <div class="ba-meta"><span class="ba-tag">← Drag the slider</span><span class="ba-tag">Uyo Apartment</span></div>
+      <div class="sw" data-slider>
+        <div class="sw-after"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80" alt="After"></div>
+        <div class="sw-before"><img src="https://images.unsplash.com/photo-1598300056393-4aac492f4344?w=800&q=80" alt="Before"></div>
+        <div class="sw-line"></div>
+        <div class="sw-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></div>
+        <div class="sw-badges"><span class="bb">Before</span><span class="ab">After</span></div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">🍳</div>
-        <h3>Kitchen Backsplash</h3>
-        <p>Custom tile designs and layouts to enhance your kitchen's style and functionality.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🏗️</div>
-        <h3>Floor Tiling</h3>
-        <p>High-quality floor installations that are durable and designed to last years.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🎨</div>
-        <h3>Custom Designs</h3>
-        <p>Bring your unique vision to life with our custom tile designs and patterns.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">✨</div>
-        <h3>Tile Repair</h3>
-        <p>Professional repair and replacement of damaged tiles to restore your space.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🏘️</div>
-        <h3>Commercial Tiling</h3>
-        <p>Large-scale projects for businesses with professional project management.</p>
+    </div>
+    <div class="ba-card reveal d2">
+      <div class="ba-title">Kitchen Wall &amp; Floor</div>
+      <div class="ba-meta"><span class="ba-tag">← Drag the slider</span><span class="ba-tag">Residential Kitchen</span></div>
+      <div class="sw" data-slider>
+        <div class="sw-after"><img src="before1.jpg" alt="After"></div>
+        <div class="sw-before"><img src="after1.jpg" alt="Before"></div>
+        <div class="sw-line"></div>
+        <div class="sw-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></div>
+        <div class="sw-badges"><span class="bb">Before</span><span class="ab">After</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VIDEO SHOWCASE -->
-<section class="videos">
-  <div class="container">
-    <h2>See Our Work in Action</h2>
-    <p>Real projects. Real results.</p>
-
-    <div class="video-grid">
-      <!-- YouTube -->
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-        title="YouTube video"
-        frameborder="0"
-        allowfullscreen></iframe>
-
-      <!-- TikTok (embed link) -->
-      <iframe src="https://www.tiktok.com/embed/VIDEO_ID"
-        frameborder="0"
-        allowfullscreen></iframe>
+<!-- VIDEOS -->
+<section id="work">
+  <div class="work-head">
+    <div class="reveal">
+      <div class="eyebrow">On Camera</div>
+      <h2>Watch the<br><em>Work in Action</em></h2>
+    </div>
+    <p class="reveal d1">See how Joel tackles real jobs from start to finish. Replace the placeholders below with your actual YouTube video IDs when ready.</p>
+  </div>
+  <div class="vid-grid">
+    <!-- To add a real video, replace the whole .vid-card block with:
+    <div class="vid-card">
+      <div class="vid-embed"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe></div>
+      <div class="vid-info"><h4>Your Title Here</h4><p>Short description</p></div>
+    </div> -->
+    <div class="vid-card reveal">
+      <div class="vid-thumb"><div class="play-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0d0b"><polygon points="5,3 19,12 5,21"/></svg></div><span class="vid-tag">Add YouTube Link</span></div>
+      <div class="vid-info"><h4>Bathroom Renovation Time-lapse</h4><p>Full bathroom floor to ceiling</p></div>
+    </div>
+    <div class="vid-card reveal d1">
+      <div class="vid-thumb"><div class="play-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0d0b"><polygon points="5,3 19,12 5,21"/></svg></div><span class="vid-tag">Add YouTube Link</span></div>
+      <div class="vid-info"><h4>Outdoor Patio — Full Project</h4><p>Large format outdoor tiles, Uyo</p></div>
+    </div>
+    <div class="vid-card reveal d2">
+      <div class="vid-thumb"><div class="play-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0d0b"><polygon points="5,3 19,12 5,21"/></svg></div><span class="vid-tag">Add YouTube Link</span></div>
+      <div class="vid-info"><h4>Pool Tiling — Start to Finish</h4><p>Mosaic pool install walkthrough</p></div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="projects">
-  <div class="container">
-    <h2>Completed Projects</h2>
-
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="before1.jpg" alt="Before tiling">
-        <img src="after1.jpg" alt="After tiling">
-        <p>Bathroom Renovation – Uyo</p>
-      </div>
-
-      <div class="project-card">
-        <img src="before2.jpg" alt="Before tiling">
-        <img src="after2.jpg" alt="After tiling">
-        <p>Kitchen Backsplash – Akwa Ibom</p>
-      </div>
-    </div>
+<!-- PROCESS -->
+<section id="process">
+  <div class="proc-head reveal">
+    <div class="eyebrow">How It Works</div>
+    <h2>Simple. <em>Stress-free.</em></h2>
+    <p>Getting a beautiful tiled space shouldn't be complicated. Here's how Joel makes it easy from first contact to finished floor.</p>
   </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="process" id="process">
-  <div class="container">
-    <h2>How It Works</h2>
-    <p>Simple, transparent, and professional from start to finish</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Request a Quote</h3>
-        <p>Contact us via phone, WhatsApp, or our online form to discuss your project requirements.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Site Assessment</h3>
-        <p>Our experts visit your location to measure, assess, and recommend the best tiling solutions.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Expert Installation</h3>
-        <p>Our skilled team executes the tiling with precision, ensuring a flawless and durable finish.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Final Inspection & Enjoy</h3>
-        <p>We conduct a thorough inspection, clean up, and hand over your beautifully tiled space.</p>
-      </div>
-    </div>
+  <div class="proc-steps">
+    <div class="step reveal"><div class="step-n">1</div><h3>Contact Joel</h3><p>Reach out on WhatsApp or use the form below. Describe the job and we'll respond fast — usually within the hour.</p></div>
+    <div class="step reveal d1"><div class="step-n">2</div><h3>Free Site Visit</h3><p>Joel visits, measures up, checks the surface, and gives you an honest quote with zero hidden costs.</p></div>
+    <div class="step reveal d2"><div class="step-n">3</div><h3>We Get to Work</h3><p>Materials sourced, surface properly prepped, tiles laid with precision. Clean and professional throughout the job.</p></div>
+    <div class="step reveal d3"><div class="step-n">4</div><h3>You Love It</h3><p>Final walkthrough together. We don't leave until you're fully satisfied with every single tile and grout line.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
-  <div class="container">
-    <h2>What Our Clients Say</h2>
-    <p>See why customers trust us for their tiling projects</p>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Joel transformed our bathroom completely. Professional, clean, and finished ahead of schedule. Highly recommended!"</p>
-        <h4>Mrs. Inyene O.</h4>
-        <span>Uyo</span>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"The kitchen backsplash looks amazing. The attention to detail and quality of work is outstanding. Worth every penny."</p>
-        <h4>Mr. Akpan E.</h4>
-        <span>Akwa Ibom</span>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Very professional team. They explained everything clearly, no hidden costs, and the final result exceeded expectations."</p>
-        <h4>Chief Okonkwo</h4>
-        <span>Uyo</span>
-      </div>
+<section id="testi">
+  <div class="testi-head reveal">
+    <div class="eyebrow">Client Reviews</div>
+    <h2>What People <em>Say</em></h2>
+    <p style="color:var(--stone)">Don't take our word for it — here's what clients across Akwa Ibom say about Joel's work.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="tc reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote>Joel tiled our entire bathroom and kitchen backsplash. The finish is immaculate — not a single tile out of place. He's neat, punctual, and very professional. Will definitely use him again.</blockquote>
+      <div class="tp"><div class="tav">C</div><div><div class="tname">Chioma A.</div><div class="tloc">Uyo, Akwa Ibom</div></div></div>
+    </div>
+    <div class="tc reveal d1">
+      <div class="stars">★★★★★</div>
+      <blockquote>We used Joel for our swimming pool and outdoor patio. The pool tiles are absolutely stunning and the waterproofing was done properly — no issues after two rainy seasons. Worth every naira.</blockquote>
+      <div class="tp"><div class="tav">E</div><div><div class="tname">Emeka O.</div><div class="tloc">Uyo, Akwa Ibom</div></div></div>
+    </div>
+    <div class="tc reveal d2">
+      <div class="stars">★★★★★</div>
+      <blockquote>Joel did our office reception floor. Large format tiles, perfect alignment, and he finished ahead of schedule. Our clients always compliment how beautiful the floor looks. 10 out of 10.</blockquote>
+      <div class="tp"><div class="tav">F</div><div><div class="tname">Funke B.</div><div class="tloc">Eket, Akwa Ibom</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <h2>Get Your Free Quote Today</h2>
-    <p>Transform your space with professional tiling. Contact us now!</p>
-
-    <div class="contact-content">
-      <div class="contact-form">
-        <form id="contactForm" action="mailto:linibensojr@gmail.com" method="post" enctype="text/plain">
-          <input type="text" name="name" placeholder="Your Full Name" required>
-          <input type="email" name="email" placeholder="Email Address" required>
-          <input type="tel" name="phone" placeholder="Phone Number" required>
-          <textarea name="message" placeholder="Describe your project..." rows="5" required></textarea>
-          <button type="submit" class="btn primary">Send Inquiry</button>
-        </form>
+<section id="contact">
+  <div class="ct-grid">
+    <div class="ct-left reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's Build<br><em>Something Beautiful</em></h2>
+      <p>No physical showroom — we come to you. Based in Uyo, we serve all of Akwa Ibom State and surrounding areas. The fastest way to reach Joel is always on WhatsApp.</p>
+      <div class="ir"><div class="ir-icon">📍</div><div><div class="ir-l">Location</div><div class="ir-v">Uyo, Akwa Ibom State, Nigeria</div></div></div>
+      <div class="ir"><div class="ir-icon">📱</div><div><div class="ir-l">WhatsApp / Phone</div><div class="ir-v">+234 — Add your number here</div></div></div>
+      <div class="ir"><div class="ir-icon">🕐</div><div><div class="ir-l">Working Hours</div><div class="ir-v">Mon – Sat &nbsp;·&nbsp; 7:00 AM – 6:00 PM</div></div></div>
+      <div class="ir" style="border:none;margin-bottom:0;padding-bottom:0"><div class="ir-icon">⚡</div><div><div class="ir-l">Response Time</div><div class="ir-v">Usually within the hour on WhatsApp</div></div></div>
+      <a href="https://wa.me/YOUR_NUMBER?text=Hi%20Joel!%20I'd%20like%20a%20quote." class="wa-cta" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>Message Joel on WhatsApp<div class="wa-sub">Fastest way to get a quote</div></div>
+      </a>
+    </div>
+    <div class="reveal d2">
+      <div class="eyebrow">Quick Enquiry</div>
+      <div style="height:.8rem"></div>
+      <div class="form-row"><label>Your Name</label><input type="text" id="f-name" placeholder="e.g. Amaka Johnson"></div>
+      <div class="form-row"><label>Phone Number</label><input type="tel" id="f-phone" placeholder="+234 ..."></div>
+      <div class="form-row"><label>Service Needed</label>
+        <select id="f-service">
+          <option value="">Select a service...</option>
+          <option>Bathroom / Kitchen Tiling</option>
+          <option>Residential Flooring</option>
+          <option>Commercial Space</option>
+          <option>Pool or Water Feature</option>
+          <option>Outdoor / Patio</option>
+          <option>Feature Wall / Mosaic</option>
+          <option>Not sure yet — need advice</option>
+        </select>
       </div>
-
-      <div class="contact-info">
-        <div class="contact-box">
-          <h4>📞 Call Us</h4>
-          <p><a href="tel:234XXXXXXXXXX">+234 XXX XXXX XXX</a></p>
-        </div>
-        <div class="contact-box">
-          <h4>💬 WhatsApp</h4>
-          <p><a href="https://wa.me/234XXXXXXXXXX">Message on WhatsApp</a></p>
-        </div>
-        <div class="contact-box">
-          <h4>📍 Location</h4>
-          <p>Uyo, Akwa Ibom State, Nigeria</p>
-        </div>
-        <div class="contact-box">
-          <h4>⏰ Hours</h4>
-          <p>Mon - Sat: 8AM - 6PM<br>Sun: By Appointment</p>
-        </div>
-      </div>
+      <div class="form-row"><label>Tell us about your project</label><textarea id="f-msg" placeholder="e.g. I need my 3-bedroom apartment bathroom tiled in Uyo GRA. Approximately 12sqm."></textarea></div>
+      <button class="form-submit" onclick="sendToWA()">Send Enquiry via WhatsApp →</button>
+      <p class="form-note">This opens WhatsApp with your details pre-filled.<br>No account or payment needed — just a quick chat with Joel.</p>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Joel the Tiler</h4>
-        <p>Professional tile installation services in Uyo, Akwa Ibom.</p>
-        <p><strong>Contact:</strong> <a href="https://wa.me/2348130003406">WhatsApp</a></p>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#process">How It Works</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Joel the Tiler. All rights reserved. | Uyo, Akwa Ibom</p>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div class="fl">Joel <em>Tiler</em></div>
+  <div class="flinks">
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#ba">Before &amp; After</a>
+    <a href="#work">Videos</a>
+    <a href="#testi">Reviews</a>
+    <a href="#contact">Contact</a>
   </div>
+  <small>© 2025 Joel Tiler · Uyo, Nigeria</small>
 </footer>
 
-<script src="script.js"></script>
-<script src="script.js"></script>
+<script>
+/* CURSOR */
+const cur = document.getElementById('cur');
+const curR = document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button,.svc,.gp,.vid-thumb,.sw').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cg'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cg'));
+});
+
+/* NAV */
+const nav=document.getElementById('mainnav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',window.scrollY>60));
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* BEFORE/AFTER SLIDERS */
+document.querySelectorAll('[data-slider]').forEach(wrap=>{
+  const before=wrap.querySelector('.sw-before');
+  const line=wrap.querySelector('.sw-line');
+  const handle=wrap.querySelector('.sw-handle');
+  let drag=false;
+  function set(x){
+    const r=wrap.getBoundingClientRect();
+    let p=Math.max(0,Math.min(100,(x-r.left)/r.width*100));
+    before.style.clipPath=`inset(0 ${100-p}% 0 0)`;
+    line.style.left=p+'%';
+    handle.style.left=p+'%';
+  }
+  wrap.addEventListener('mousedown',e=>{drag=true;set(e.clientX);});
+  window.addEventListener('mousemove',e=>{if(drag)set(e.clientX);});
+  window.addEventListener('mouseup',()=>drag=false);
+  wrap.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchmove',e=>{if(drag)set(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',()=>drag=false);
+  set(wrap.getBoundingClientRect().left+wrap.offsetWidth*.5);
+});
+
+/* FORM → WA */
+function sendToWA(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const svc=document.getElementById('f-service').value;
+  const msg=document.getElementById('f-msg').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  const t=`Hi Joel! My name is ${name}.%0A%0AService: ${svc||'Not specified'}%0APhone: ${phone||'See WhatsApp'}%0A%0ADetails: ${msg||'Will discuss.'}`;
+  window.open(`https://wa.me/YOUR_NUMBER?text=${t}`,'_blank');
+}
+</script>
 </body>
 </html>
